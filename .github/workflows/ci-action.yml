@@ -21,16 +21,15 @@ jobs:
           username: ${{secrets.DOCKER_HUB_USERNAME}}
           password: ${{secrets.DOCKER_HUB_ACCESS_TOKEN}}
 
-      - name: Use bun for build application
-        uses: oven-sh/setup-bun@v1
+      - name: Use NodeJS
+        uses: actions/setup-node@v4
         with:
-          bun-version: "latest"
+          node-version: "20.x"
 
       - name: Install node_module
-        run: bun install --frozen-lockfile --production
-
+        run: npm ci
       - name: Build into standalone bundle
-        run: bun run build
+        run: npm run build
 
       - name: Build and Push docker-compose for production
         if: github.ref == 'refs/heads/main'
