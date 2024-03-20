@@ -1,0 +1,39 @@
+version: "3.9"
+services:
+  development:
+    container_name: vtech-todo-development
+    image: godda0801/vtech-todo-development
+    restart: always
+    build:
+      context: .
+      args:
+        - ENV=development
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mysql_host
+  production:
+    container_name: vtech-todo-production
+    image: godda0801/vtech-todo-production
+    restart: always
+    build:
+      context: .
+      args:
+        - ENV=production
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mysql_host
+  mysql_host:
+    container_name: vtech-todo-mysql
+    image: mysql:8.2.0
+    restart: always
+    command: --lower_case_table_names=0
+    environment:
+      MYSQL_ROOT_PASSWORD: admin@root
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./drizzle:/docker-entrypoint-initdb.d/init.sql
+volumes:
+  mysql_data:
+    name: "vtech-todo-volume"
