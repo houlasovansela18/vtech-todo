@@ -28,19 +28,27 @@ jobs:
 
       - name: Install node_module
         run: npm ci
-      - name: Build into standalone bundle
-        run: npm run build
+
+      - name: Build into standalone bundle for production
+        if: github.ref == 'refs/heads/main'
+        run: |
+          echo '${{secrets.PROD_ENV}}' > .env
+          npm run build
+
+      - name: Build into standalone bundle for development
+        if: github.ref == 'refs/heads/development'
+        run: |
+          echo '${{secrets.DEV_ENV}}' > .env
+          npm run build
 
       - name: Build and Push docker-compose for production
         if: github.ref == 'refs/heads/main'
         run: |
-          echo '${{secrets.PROD_ENV}}' > .env.production
           docker-compose build production
           docker-compose push production
 
       - name: Build and Push docker-compose for development
         if: github.ref == 'refs/heads/development'
         run: |
-          echo '${{secrets.DEV_ENV}}' > .env.development
           docker-compose build development
           docker-compose push development
