@@ -24,7 +24,7 @@ services:
         container_name: vtech-todo-mysql
         image: mysql:8.2.0
         restart: always
-        command: --lower_case_table_names=0
+        command: --lower_case_table_names=1
         ports:
             - "3306:3306"
         environment:
@@ -33,7 +33,7 @@ services:
             MYSQL_PASSWORD: dG9kb190Yg==
             MYSQL_DATABASE: todo_list
         volumes:
-            #     - mysql_data:/var/lib/mysql
+            - ./lib/db:/var/lib/mysql
             - ./lib/drizzle:/docker-entrypoint-initdb.d/init.sql
 volumes:
     mysql_data:
