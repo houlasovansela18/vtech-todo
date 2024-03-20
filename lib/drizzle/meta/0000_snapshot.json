@@ -1,0 +1,67 @@
+{
+  "version": "5",
+  "dialect": "mysql",
+  "id": "cf732b00-27d0-45e1-86a7-a8b5474eb112",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "tables": {
+    "todo_tb": {
+      "name": "todo_tb",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "todo": {
+          "name": "todo",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "isCompleted": {
+          "name": "isCompleted",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": false
+        },
+        "createAt": {
+          "name": "createAt",
+          "type": "timestamp(0)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "(now())"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "todo_tb_id": {
+          "name": "todo_tb_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "uniqueConstraints": {
+        "todo_tb_todo_unique": {
+          "name": "todo_tb_todo_unique",
+          "columns": [
+            "todo"
+          ]
+        }
+      }
+    }
+  },
+  "schemas": {},
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {}
+  }
+}
