@@ -277,10 +277,10 @@ export default function Home() {
                                                                 Edit todo
                                                             </DialogTitle>
                                                             <DialogDescription>
-                                                                Make changes to
+                                                                {`Make changes to
                                                                 your todo here.
                                                                 Click save when
-                                                                you're done.
+                                                                you're done.`}
                                                             </DialogDescription>
                                                         </DialogHeader>
                                                         <div className="grid gap-4 py-4">
