@@ -23,11 +23,13 @@ jobs:
 
             - name: Generate env file for development
               if: github.ref == 'refs/heads/development'
-              run: echo '${{secrets.DEV_ENV}}' > .env.development
+              run: |
+                  echo '${{secrets.DEV_ENV}}' > .env.development
 
             - name: Generate env file for production
               if: github.ref == 'refs/heads/main'
-              run: echo '${{secrets.PROD_ENV}}' > .env.production
+              run: |
+                  echo '${{secrets.PROD_ENV}}' > .env.production
 
             - name: Build and Push docker-compose for production
               if: github.ref == 'refs/heads/main'
