@@ -33,7 +33,7 @@ services:
             MYSQL_PASSWORD: dG9kb190Yg==
             MYSQL_DATABASE: todo_list
         volumes:
-            - ./lib/db:/var/lib/mysql
+            # - ./lib/db:/var/lib/mysql
             - ./lib/drizzle:/docker-entrypoint-initdb.d/init.sql
 volumes:
     mysql_data:
