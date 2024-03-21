@@ -21,6 +21,14 @@ jobs:
                   username: ${{secrets.DOCKER_HUB_USERNAME}}
                   password: ${{secrets.DOCKER_HUB_ACCESS_TOKEN}}
 
+            - name: Generate env file for development
+              if: github.ref == 'refs/heads/development'
+              run: echo '${{secrets.DEV_ENV}}' > .env.development
+
+            - name: Generate env file for production
+              if: github.ref == 'refs/heads/main'
+              run: echo '${{secrets.PROD_ENV}}' > .env.production
+
             - name: Build and Push docker-compose for production
               if: github.ref == 'refs/heads/main'
               run: |
