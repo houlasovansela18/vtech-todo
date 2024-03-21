@@ -31,6 +31,6 @@ jobs:
             - name: Build and Push docker-compose for development
               if: github.ref == 'refs/heads/development'
               run: |
-                  echo '${{secrets.DEV_ENV}}' > .env.development
+                  echo '${{secrets.DEV_ENV}}' > .env.production
                   docker-compose build development
                   docker-compose push development
