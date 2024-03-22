@@ -1,6 +1,6 @@
 ## Getting Started
 
-First, run the development server:
+For development process, run the development server:
 
 ```bash
 npm run dev
@@ -19,10 +19,11 @@ This project uses [`mysql:8.2.0`](https://hub.docker.com/_/mysql) as database fo
 
 ## Deploy on local machine
 
-1. Spin up database server
+1. Make sure that `docker` is install on your local machine:
 
-- Navigate to root dir of this project.
-- Make sure that docker is install on your local machine.
-- Run `docker-compose up -d mysql_host` to start mysql server.
+- Run `docker --version` #expect `Docker version x.x.x, build xxxx`.
 
-2. Run NextJS project as above mentioned.
+2. Run project using `docker-compose` on local machine:
+
+- Run `docker-compose up -d development` for development env.
+- Run `docker-compose up -d production` for production env.
