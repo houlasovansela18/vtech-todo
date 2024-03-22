@@ -1,4 +1,4 @@
-FROM node:18-alpine AS base
+FROM --platform=linux/arm64/v8 node:18-alpine AS base
 
 FROM base AS deps
 RUN apk add --no-cache libc6-compat
@@ -39,4 +39,4 @@ EXPOSE 3000
 
 ENV PORT 3000
 
-CMD HOSTNAME=127.0.0.1 node server.js
+CMD HOSTNAME=0.0.0.0 node server.js
