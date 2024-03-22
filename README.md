@@ -14,8 +14,8 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-This project uses [`mysql:8.2.0`](https://nextjs.org/docs/basic-features/font-optimization) as database for this project.
-[`drizzleORM`](https://nextjs.org/docs/basic-features/font-optimization) as ORM for this project.
+This project uses [`mysql:8.2.0`](https://hub.docker.com/_/mysql) as database for this project.
+[`drizzleORM`](https://orm.drizzle.team/docs/overview) as ORM for this project.
 
 ## Deploy on local machine
 
